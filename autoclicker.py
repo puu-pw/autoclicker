@@ -46,6 +46,9 @@ class AutoClicker:
             click(self.mouse_button)
             time.sleep(self.interval)
 
+    def set_interval(self, interval):
+        self.interval = interval
+
     def toggle_clicking(self):
         if self.running:
             self.stop_clicking()
@@ -90,6 +93,9 @@ class AutoClickerApp:
         self.clicker = AutoClicker()
         self.set_hotkey()  # Set fixed hotkey for toggling clicking
 
+        # Track changes to interval entry field
+        self.interval_entry.bind("<KeyRelease>", self.update_interval)
+
     def set_hotkey(self):
         # Fixed hotkey to start/stop the autoclicker
         hotkey = "ctrl+shift+a"
@@ -114,6 +120,13 @@ class AutoClickerApp:
             self.status_label.configure(text="Status: Running")
         else:
             self.status_label.configure(text="Status: Stopped")
+
+    def update_interval(self, event=None):
+        try:
+            interval = float(self.interval_entry.get())
+            self.clicker.set_interval(interval)
+        except ValueError:
+            pass  # Ignore invalid input
 
 # Main loop
 if __name__ == "__main__":
