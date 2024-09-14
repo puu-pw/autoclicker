@@ -12,6 +12,7 @@ MOUSEEVENTF_RIGHTDOWN = 0x0008
 MOUSEEVENTF_RIGHTUP = 0x0010
 MOUSEEVENTF_ABSOLUTE = 0x8000
 
+
 # Click function using ctypes
 def click(mouse_button):
     if mouse_button == "left":
@@ -20,6 +21,7 @@ def click(mouse_button):
     elif mouse_button == "right":
         ctypes.windll.user32.mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
         ctypes.windll.user32.mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
+
 
 # Autoclicker class
 class AutoClicker:
