@@ -57,6 +57,7 @@ class AutoClicker:
         else:
             self.start_clicking()
 
+
 # GUI class
 class AutoClickerApp:
     def __init__(self, root):
@@ -129,6 +130,7 @@ class AutoClickerApp:
             self.clicker.set_interval(interval)
         except ValueError:
             pass  # Ignore invalid input
+
 
 # Main loop
 if __name__ == "__main__":
